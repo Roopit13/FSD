@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .option {
+            margin-bottom: 5px;
+        }
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #prev {
+            background-color: #007bff;
+        }
+        #prev:hover {
+            background-color: #0069d9;
+        }
+        #submit-btn {
+            display: block;
+            margin: 20px auto;
+            background-color: #dc3545;
+        }
+        #submit-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Online Quiz</h1>
+        <form id="quiz-form">
+            <div class="question" id="question-1">
+                <p>1. What is the capital of France?</p>
+                <div class="option">
+                    <input type="radio" id="q1-a" name="q1" value="A">
+                    <label for="q1-a">London</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-b" name="q1" value="B">
+                    <label for="q1-b">Berlin</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-c" name="q1" value="C">
+                    <label for="q1-c">Paris</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q1-d" name="q1" value="D">
+                    <label for="q1-d">Madrid</label>
+                </div>
+            </div>
+
+            <div class="question" id="question-2" style="display: none;">
+                <p>2. What is the largest planet in our Solar System?</p>
+                <div class="option">
+                    <input type="radio" id="q2-a" name="q2" value="A">
+                    <label for="q2-a">Earth</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2-b" name="q2" value="B">
+                    <label for="q2-b">Jupiter</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2-c" name="q2" value="C">
+                    <label for="q2-c">Mars</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q2-d" name="q2" value="D">
+                    <label for="q2-d">Venus</label>
+                </div>
+            </div>
+
+            <div class="question" id="question-3" style="display: none;">
+                <p>3. Which is the largest ocean on the Earth?</p>
+                <div class="option">
+                    <input type="radio" id="q3-a" name="q3" value="A">
+                    <label for="q3-a">Atlantic</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3-b" name="q3" value="B">
+                    <label for="q3-b">Arctic</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3-c" name="q3" value="C">
+                    <label for="q3-c">Indian</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q3-d" name="q3" value="D">
+                    <label for="q3-d">Pacific</label>
+                </div>
+            </div>
+
+            <div class="question" id="question-4" style="display: none;">
+                <p>4. How many moons does Earth have?</p>
+                <div class="option">
+                    <input type="radio" id="q4-a" name="q4" value="A">
+                    <label for="q4-a">1</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4-b" name="q4" value="B">
+                    <label for="q4-b">90</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4-c" name="q4" value="C">
+                    <label for="q4-c">136</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q4-d" name="q4" value="D">
+                    <label for="q4-d">198</label>
+                </div>
+            </div>
+
+            <div class="question" id="question-5" style="display: none;">
+                <p>5. Which is the largest gas giant in our Solar System?</p>
+                <div class="option">
+                    <input type="radio" id="q5-a" name="q5" value="A">
+                    <label for="q5-a">Mercury</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5-b" name="q5" value="B">
+                    <label for="q5-b">Saturn</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5-c" name="q5" value="C">
+                    <label for="q5-c">Jupiter</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="q5-d" name="q5" value="D">
+                    <label for="q5-d">Pluto</label>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" id="prev" onclick="prevQuestion()" disabled>Prev</button>
+                <button type="button" id="next" onclick="nextQuestion()">Next</button>
+            </div>
+            <button type="submit" id="submit-btn" style="display: none;">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+
+        function showQuestion(questionNumber) {
+            for (let i = 1; i <= totalQuestions; i++) {
+                document.getElementById(`question-${i}`).style.display = "none";
+            }
+            document.getElementById(`question-${questionNumber}`).style.display = "block";
+            document.getElementById("prev").disabled = questionNumber === 1;
+            if (questionNumber === totalQuestions) {
+                document.getElementById("next").style.display = "none";
+                document.getElementById("submit-btn").style.display = "inline-block";
+            } else {
+                document.getElementById("next").style.display = "inline-block";
+                document.getElementById("submit-btn").style.display = "none";
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+
+        showQuestion(currentQuestion);
+
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = 0;
+            const answers = {
+                q1: "C",
+                q2: "B",
+                q3: "D",
+                q4: "A",
+                q5: "C"
+            };
+            const form = new FormData(event.target);
+            for (let question in answers) {
+                if (form.get(question) === answers[question]) {
+                    score++;
+                }
+            }
+            document.getElementById('result').textContent = `Your score is ${score}/${totalQuestions}`;
+        });
+    </script>
+</body>
+</html>
